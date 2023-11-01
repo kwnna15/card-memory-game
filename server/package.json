@@ -1,0 +1,10 @@
+{
+    "name": "logo-server",
+    "version": "0.1.0",
+    "scripts": {
+        "start": "ts-node index.ts"
+    },
+    "dependencies": {
+        "express": "^4.18.2"
+    }
+}
