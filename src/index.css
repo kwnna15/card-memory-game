@@ -1,13 +1,105 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import-normalize;
+
+:root {
+    --card-flip-duration: 200ms;
+    --card-flip-transition: all ease-in 200ms;
+    --radius: 0.75rem;
+    --rotate-0: rotateY(0deg);
+    --rotate-90: rotateY(90deg);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    align-items: flex-start;
+    background: linear-gradient(
+        90deg,
+        rgba(45, 66, 146, 1) 35%,
+        rgba(0, 212, 255, 1) 100%
+    );
+    box-sizing: border-box;
+    display: flex;
+    font-family: Candara, Calibri, Segoe, Segoe UI, Optima, Arial, sans-serif;
+    justify-content: center;
+}
+
+.score-board {
+    align-items: center;
+    background: #3563d0;
+    border-radius: var(--radius);
+    color: #ffffff;
+    display: flex;
+    height: 3rem;
+    justify-content: space-evenly;
+}
+
+button {
+    background-color: #ffffff;
+    border-radius: var(--radius);
+    color: #686aba;
+    cursor: pointer;
+    font-size: 22px;
+    padding: 0.2rem 0.2rem;
+}
+button:hover {
+    background-color: #fcfa9f;
+}
+button:active {
+    position: relative;
+    top: 1px;
+}
+
+.card-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(4, auto);
+    margin: 1rem auto;
+}
+
+.card {
+    align-items: center;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 150px;
+}
+
+.card img {
+    width: 100%;
+}
+
+.card-back {
+    background: #ffffff;
+    border-color: black;
+    border-radius: var(--radius);
+    border-style: solid;
+    border-width: 2px;
+    transform: var(--rotate-0);
+    transition: var(--card-flip-transition);
+    transition-delay: var(--card-flip-duration);
+}
+
+.card-face {
+    background: #ffffff;
+    border-color: black;
+    border-radius: var(--radius);
+    border-style: solid;
+    border-width: 2px;
+    position: absolute;
+    transform: var(--rotate-90);
+    transition: var(--card-flip-transition);
+}
+
+.selected .card-face {
+    transform: var(--rotate-0);
+    transition-delay: var(--card-flip-duration);
+}
+
+.selected .card-back {
+    transform: var(--rotate-90);
+    transition-delay: 0s;
 }
